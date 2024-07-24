@@ -1,0 +1,16 @@
+Problem Link: https://leetcode.com/problems/combinations/
+
+
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res=[]
+        def comb(arr,count):
+            if len(arr)==k:
+                res.append(arr[:])
+            else:
+                for i in range(count,n+1):
+                    arr.append(i)
+                    comb(arr,i+1)
+                    arr.pop()
+        comb([],1)
+        return res
